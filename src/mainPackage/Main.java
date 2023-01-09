@@ -2,17 +2,21 @@ package mainPackage;
 
 import generator.Generator;
 import globalTimer.GlobalTimer;
+import graphics.MainFrame;
 import organization.Orders;
 import pizzeria.PizzaFIFO;
 import pizzeria.PizzaPROFIT;
 import pizzeria.PizzaRANDOM;
 import pizzeria.Pizzeria;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args)
     {
+        MainFrame mainFrame = new MainFrame();
+
         ArrayList<Orders> orders;
         PizzaFIFO fifo = new PizzaFIFO();
         PizzaPROFIT profit = new PizzaPROFIT();
