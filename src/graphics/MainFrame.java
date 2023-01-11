@@ -1,9 +1,6 @@
 package graphics;
-
 import Simulator.Simulation;
-
 import javax.swing.*;
-import javax.swing.plaf.SeparatorUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

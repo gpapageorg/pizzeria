@@ -21,6 +21,7 @@ public class Simulation
 
     private void execute()
     {
+        FileHandler handler = new FileHandler();
         ArrayList<Orders> orders;
         PizzaFIFO fifo = new PizzaFIFO();
         PizzaPROFIT profit = new PizzaPROFIT();
@@ -34,7 +35,7 @@ public class Simulation
 
 
         orders =  gen.genCustomers(num);
-
+        handler.writeOrders(orders);
         fifo.addOrder(orders);
         profit.addOrder(orders);
         random.addOrder(orders);
@@ -43,18 +44,26 @@ public class Simulation
         simulate(profit, profitTimer);
         simulate(random, randomTimer);
 
+
+
         printStatistics(fifo);
         printStatistics(profit);
         printStatistics(random);
+        handler.writeFinalStats(fifo);
+        handler.writeFinalStats(profit);
+        handler.writeFinalStats(random);
+
+
     }
 
 
     private void simulate(Pizzeria shop, GlobalTimer timer)
     {
         Orders ord;
-        for(int i = 0; i <num; i++)
+        for(int i = 0; i < num; i++)
         {
             ord = shop.getOrder();
+
             if(timer.addTime(2 * ord.getTimeToBeDelivered()) != 0)
             {
                 System.out.println("Debug: time boundary reached");
